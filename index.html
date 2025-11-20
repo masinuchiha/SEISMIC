@@ -7,299 +7,136 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+
 <style>
 
 body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100vh; 
+  margin: 0; padding: 0;
+  width: 100%; height: 100vh; 
   overflow: hidden; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  
-  font-family: 'Ubuntu', sans-serif;
-  color: white;
-  /* تم إصلاح الخطأ هنا بإضافة الفاصلة المنقوطة */
-  background-color: #EDEDED; 
+  display: flex; justify-content: center; align-items: center; flex-direction: column;
+  font-family: 'Ubuntu', sans-serif; color: white;
+  background-color: #1a1a2e; /* Fallback color */
   background-image: url("mybg.png");
-  background-size: cover;
-  background-position: center;
+  background-size: cover; background-position: center;
 }
 
 * { box-sizing: border-box; user-select: none; }
 
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(5, 5, 10, 0.5); 
-  backdrop-filter: blur(10px);
-  z-index: 0;
-}
+.overlay { position: absolute; inset: 0; background: rgba(5, 5, 10, 0.5); backdrop-filter: blur(8px); z-index: 0; }
 
-/* lbalonat*/
-.blobs-container {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 1;
-  pointer-events: none;
-}
 
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.6;
-  animation: floatBlob 10s infinite ease-in-out alternate;
-}
+.blobs-container { position: absolute; inset: 0; overflow: hidden; z-index: 1; pointer-events: none; }
+.blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.6; animation: floatBlob 10s infinite ease-in-out alternate; }
+.blob:nth-child(1) { top: 10%; left: 20%; width: 300px; height: 300px; background: #6e57ff; animation-duration: 12s; }
+.blob:nth-child(2) { bottom: 20%; right: 10%; width: 250px; height: 250px; background: #00c2ff; animation-duration: 15s; animation-delay: -5s; }
+.blob:nth-child(3) { bottom: 10%; left: 30%; width: 200px; height: 200px; background: #ff0080; animation-duration: 18s; animation-delay: -2s; }
 
-/* bal one*/
-.blob:nth-child(1) {
-  top: 10%; left: 20%;
-  width: 300px; height: 300px;
-  background: #6e57ff;
-  animation-duration: 12s;
-}
 
-/* kora joj*/
-.blob:nth-child(2) {
-  bottom: 20%; right: 10%;
-  width: 250px; height: 250px;
-  background: #00c2ff;
-  animation-duration: 15s;
-  animation-delay: -5s;
-}
+@keyframes floatBlob { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(40px, -40px) scale(1.1); } }
 
-/* kora 3*/
-.blob:nth-child(3) {
-  bottom: 10%; left: 30%;
-  width: 200px; height: 200px;
-  background: #ff0080;
-  animation-duration: 18s;
-  animation-delay: -2s;
-}
 
-@keyframes floatBlob {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(40px, -40px) scale(1.1); }
-}
-
-/* effect dyal chbka*/
 .tech-grid {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  z-index: 2;
-  pointer-events: none;
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px; z-index: 2; pointer-events: none;
 }
 
 
-header {
-  position: absolute;
-  top: 20px;
-  left: 0; width: 100%;
-  z-index: 100;
-  text-align: center;
-  pointer-events: none;
-}
-header img {
-  width: 180px;
-  opacity: 0.9;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
-}
+header { position: absolute; top: 20px; left: 0; width: 100%; z-index: 100; text-align: center; pointer-events: none; }
+header img { width: 180px; opacity: 0.9; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
 
-/* snad9*/
+
 .panel {
-  display: none; 
-  position: relative;
-  z-index: 10; 
-  width: 90%;
-  max-width: 500px;
-  background: rgba(20, 20, 35, 0.6); 
-  padding: 30px;
-  border-radius: 24px;
+  display: none; position: relative; z-index: 10;
+  width: 90%; max-width: 500px;
+  background: #986C9E; 
+  padding: 30px; border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
   backdrop-filter: blur(20px);
   animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
- /* show boxes clases*/
-
-.active-panel {
-  display: block !important;
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(40px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
+.active-panel { display: block !important; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(40px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
 
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; 
-}
-
-.modal-content {
-  background: rgba(30, 30, 40, 0.9);
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
-  border: 1px solid rgba(110, 87, 255, 0.3);
-  box-shadow: 0 0 30px rgba(110, 87, 255, 0.2);
-  max-width: 400px;
-  width: 90%;
-}
+.modal { position: fixed; inset: 0; background: #5E5060; display: flex; justify-content: center; align-items: center; z-index: 9999; }
+.modal-content { background: #8F7C92; padding: 40px; border-radius: 20px; text-align: center; border: 1px solid rgba(110, 87, 255, 0.3); max-width: 400px; width: 90%; }
 .modal h2 { margin-top: 0; color: #fff; }
 .warn { color: #ffcc00; font-size: 0.9rem; margin: 15px 0; }
-
 .modal-actions { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
 
 
-button {
-  padding: 12px 30px;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  transition: 0.3s;
-}
+button { padding: 12px 30px; border-radius: 12px; border: none; cursor: pointer; font-family: 'Ubuntu', sans-serif; font-weight: 600; font-size: 16px; transition: 0.3s; }
+.btn-primary { background: linear-gradient(135deg, #884B91, #4D3050); color: white; box-shadow: 0 4px 15px rgba(110, 87, 255, 0.4); }
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-action { width: 100%; margin-top: 20px; background: #a4858d; color: white; font-size: 18px; }
+.btn-action:hover { background: #75666A; }
 
-.btn-primary {
-  background: linear-gradient(135deg, #6e57ff, #00c2ff);
-  color: white;
-  box-shadow: 0 4px 15px rgba(110, 87, 255, 0.4);
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(110, 87, 255, 0.6);
-}
 
-.btn-ghost {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.3);
-  color: #ccc;
-}
-.btn-ghost:hover {
-  background: rgba(255,255,255,0.1);
-  color: white;
-}
-
-input[type="text"] {
-  width: 100%;
+.file-label {
+  display: block;
   padding: 15px;
+  border: 2px dashed rgba(255,255,255,0.3);
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(0,0,0,0.4);
-  color: white;
-  text-align: center;
-  font-size: 16px;
-  font-family: 'Poppins', sans-serif;
-  outline: none;
-  margin-bottom: 15px;
+  cursor: pointer;
+  margin: 15px 0;
+  color: #ccc;
+  transition: 0.3s;
+  background: rgba(255,255,255,0.05);
 }
+.file-label:hover { background: rgba(255,255,255,0.1); border-color: #fff; color: #fff; }
+.file-label.uploaded { border-color: #28a745; color: #28a745; background: rgba(40, 167, 69, 0.1); }
+
+
+#fileInput {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+input[type="text"] { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.4); color: white; text-align: center; font-size: 16px; outline: none; }
 input[type="text"]:focus { border-color: #6e57ff; }
 
 
-.qcard h2 {
-  font-weight: 600;
-  font-size: 1.3rem;
-  text-align: left;
-  margin-bottom: 25px;
-  line-height: 1.5;
-}
-
+.qcard h2 { font-weight: 600; font-size: 1.3rem; text-align: left; margin-bottom: 25px; }
 .options { display: flex; flex-direction: column; gap: 12px; }
-
-.opt {
-  text-align: left;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 15px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.2s;
-  border: 1px solid transparent;
-  display: flex;
-  align-items: center;
-}
+.opt { text-align: left; background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 10px; cursor: pointer; transition: 0.2s; border: 1px solid transparent; display: flex; align-items: center; }
 .opt:hover { background: rgba(255, 255, 255, 0.15); border-color: rgba(255,255,255,0.3); }
 .correct { background: rgba(40, 167, 69, 0.8) !important; border-color: #28a745; }
 .wrong { background: rgba(220, 53, 69, 0.8) !important; border-color: #dc3545; }
 .disabled { pointer-events: none; opacity: 0.6; }
 
-#timer {
-  width: 60px; height: 60px;
-  border-radius: 50%;
-  background: conic-gradient(#6e57ff, #00c2ff); 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0 auto 20px;
-  box-shadow: 0 0 20px rgba(110, 87, 255, 0.5);
-  position: relative;
-}
-#timer::before {
-  content: ''; position: absolute; inset: 4px; 
-  background: #1a1a2e; border-radius: 50%; z-index: -1;
-}
+#timer { width: 60px; height: 60px; border-radius: 50%; background: conic-gradient(##696667, ##918386); display: flex; justify-content: center; align-items: center; font-size: 24px; font-weight: 700; margin: 0 auto 20px; position: relative; }
+#timer::before { content: ''; position: absolute; inset: 4px; background: #1a1a2e; border-radius: 50%; z-index: -1; }
 
-#cardPanel {
-  width: 330px; height: 480px;
-  padding: 0;
-  background: url("card.png") center/cover no-repeat;
-  border: none;
-  
-  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-}
-#cardImg {
-  width: 140px; height: 140px;
-  border-radius: 10%;
-  position: absolute;
-  top: 85px; left: 50%;
-  transform: translateX(-50%);
-  object-fit: cover;
-  border: 4px solid rgba(255,255,255,0.2);
-}
-#cardName { position: absolute; top: 250px; width: 100%; text-align: center; font-weight: 700; font-size: 22px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
-#cardScore { position: absolute; top: 290px; width: 100%; text-align: center; font-size: 20px; }
-#cardNote { position: absolute; top: 330px; width: 100%; text-align: center; padding: 0 20px; font-size: 15px; opacity: 0.9; }
 
+#cardPanel { width: 330px; height: 480px; padding: 0; background: url("card.png") center/cover no-repeat; border: none; box-shadow: 0 20px 60px rgba(0,0,0,0.7); }
+#cardImg { width: 140px; height: 140px; border-radius: 10%; position: absolute; top: 85px; left: 50%; transform: translateX(-50%); object-fit: cover; background: #000; }
+#cardName { position: absolute; top: 250px; width: 100%; text-align: center; font-weight: 700; font-size: 27px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 10px; color: black}
+#cardScore { position: absolute; top: 290px; width: 100%; text-align: center; font-size: 24px; }
+#cardNote { position: absolute; top: 330px; width: 100%; text-align: center; padding: 0 20px; font-size: 20x; opacity: 0.9; color: black; }
+
+.cpyMasin { text-align: center; font-size: 0.9em; opacity: 0.7; position: fixed; bottom: 10px; width: 100%; z-index: 100; pointer-events: none; }
 </style>
 </head>
 <body>
 
 <header><img src="logo.png" alt="Seismic Logo"></header>
-
 <div class="overlay"></div>
-<div class="blobs-container">
-  <div class="blob"></div>
-  <div class="blob"></div>
-  <div class="blob"></div>
-</div>
+<div class="blobs-container"><div class="blob"></div><div class="blob"></div><div class="blob"></div></div>
 <div class="tech-grid"></div>
 
 <div id="startModal" class="modal">
   <div class="modal-content">
     <h2>Are you true Seismian?</h2>
-    <p class="warn"> You have only ONE attempt to prove that</p>
+    <p class="warn">⚠ You have only ONE attemptto prove that</p>
     <div class="modal-actions">
       <button class="btn-primary" id="startBtn">Start Quiz</button>
     </div>
@@ -314,13 +151,16 @@ input[type="text"]:focus { border-color: #6e57ff; }
 
 <div id="formPanel" class="panel" style="text-align: center;">
   <h2 style="margin-bottom: 10px;">Mission Complete!</h2>
+  <p style="opacity: 0.7; margin-bottom: 20px;">Enter your Discord username and PFP</p>
   
-  <input type="text" id="nameInput" placeholder="Enter your Discord username" maxlength="18">
+  <input type="text" id="nameInput" placeholder="Discord username" maxlength="18">
   
-  <label class="btn-ghost" style="display: inline-block; padding: 12px 30px; border-radius: 12px; cursor: pointer; margin-top: 10px;">
-  Upload your PFP 📷
-    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+  <input type="file" id="fileInput" accept="image/*">
+  <label for="fileInput" class="file-label" id="fileLabel">
+    📷 Tap to Upload Photo
   </label>
+
+  <button id="generateBtn" class="btn-primary btn-action">Show result</button>
 </div>
 
 <div id="cardPanel" class="panel">
@@ -330,18 +170,17 @@ input[type="text"]:focus { border-color: #6e57ff; }
   <p id="cardNote"></p>
 </div>
 
-<p class="cpy" style="text-align: center; font-size: 0.9em; opacity: 0.7;">&copy; 2025 masinonline</p>
+<p class="cpyMasin">&copy; 2025 masinonline</p>
 
 <script>
 document.addEventListener('DOMContentLoaded', ()=>{
 
+  // DATA
   const SECURE_DATA = "W3sicSI6IldobyBpcyB0aGUgZm91bmRlciBvZiBTZWlzbWljPyIsImEiOlsiTHlyb24gQ28gVGlueSBLZWgiLCJWaXRhbGlrIEJ1dGVyaW4iLCJFbWluIEfDvG4gU2lyZXIiLCJab29rbyBXaWxjb3giXSwiYyI6MH0seyJxIjoiV2hhdCBpcyBTZWlzbWljJ3MgcHJpbWFyeSBtaXNzaW9uPyIsImEiOlsiQnVpbGRpbmcgYSBmdWxseSBlbmNyeXB0ZWQgYmxvY2tjaGFpbiIsIkJ1aWxkaW5nIGEgY3J5cHRvIHdhbGxldCIsIkRldmVsb3BpbmcgYSBXZWIzIGdhbWUiLCJDcmVhdGluZyBhbiBORlQgbWFya2V0cGxhY2UiXSwiYyI6MH0seyJxIjoiSG93IG11Y2ggY2FwaXRhbCBkaWQgU2Vpc21pYyByYWlzZSBpbiBpdHMgbGF0ZXN0IGZ1bmRpbmcgcm91bmQ/IiwiYSI6WyIkMTAgbWlsbGlvbiIsIiQ0IG1pbGxpb24iLCIkNiBtaWxsaW9uIiwiJDExIG1pbGxpb24iXSwiYyI6MH0seyJxIjoiV2hvIGxlZCB0aGUgZnVuZGluZyByb3VuZD8iLCJhIjpbImExNnogQ3J5cHRvIiwiQmluYW5jZSBMYWJzIiwiQ29pbmJhc2UgVmVudHVyZXMiLCJQYXJhZGlnbSJdLCJjIjowfSx7InEiOiJXaGF0IGRpc3Rpbmd1aXNoZXMgU2Vpc21pYyBmcm9tIG90aGVyIGJsb2NrY2hhaW5zPyIsImEiOlsiUHJvdG9jb2wtbGV2ZWwgZW5jcnlwdGlvbiIsIkxvdyB0cmFuc2FjdGlvbiBmZWVzIG9ubHkiLCJIaWdoZXIgYmxvY2sgc3BlZWQiLCJQdXJlIFByb29mLW9mLVN0YWtlIHN5c3RlbSJdLCJjIjowfSx7InEiOiJXaGF0IGlzIFNlaXNtaWMgY3VycmVudGx5IGxhdW5jaGluZz8iLCJhIjpbIkRldmVsb3BlciBUZXN0bmV0IiwiQSBzdGFibGVjb2luIiwiQW4gTkZUIHBsYXRmb3JtIiwiQSBMYXllciAyIG5ldHdvcmsiXSwiYyI6MH0seyJxIjoiV2hpY2ggb2YgdGhlIGZvbGxvd2luZyBkb2VzIFNlaXNtaWMgc3VwcG9ydD8iLCJhIjpbIkVuY3J5cHRlZCBEZUZpIGFwcGxpY2F0aW9ucyIsIldlYjMgZ2FtZXMgb25seSIsIk11bHRpLXNpZ25hdHVyZSB3YWxsZXRzIiwiU21hcnQgY29udHJhY3RzIHdpdGhvdXQgZW5jcnlwdGlvbiJdLCJjIjowfSx7InEiOiJXaGljaCBwcm90b2NvbCBpcyBjdXJyZW50bHkgYnVpbHQgb24gU2Vpc21pYz8iLCJhIjpbIk5JQkJMRSIsIlVuaXN3YXAiLCJPcHRpbWlzbSIsIlNvbGZsYXJlIl0sImMiOjB9LHsicSI6IldoYXQgY3JpdGljYWwgZmxhdyBkb2VzIFNlaXNtaWMgaWRlbnRpZnkgaW4gdHJhZGl0aW9uYWwgYmxvY2tjaGFpbnM/IiwiYSI6WyJGb3JjZWQgdHJhbnNhY3Rpb24gdHJhbnNwYXJlbmN5IiwiTGFjayBvZiBsaXF1aWRpdHkiLCJTbG93IHZlcmlmaWNhdGlvbiIsIkxhY2sgb2Ygd2FsbGV0cyJdLCJjIjowfSx7InEiOiJIb3cgZG9lcyBTZWlzbWljIG1hbmFnZSBvbi1jaGFpbiBkYXRhPyIsImEiOlsiRW5jcnlwdGVkIGdsb2JhbCBzdGF0ZSIsIkxvY2FsbHkgc3RvcmVkIGRhdGEiLCJPZmYtY2hhaW4gc3RvcmFnZSBvbmx5IiwiTm8gcGVyc2lzdGVudCBzdG9yYWdlIl0sImMiOjB9LHsicSI6IldoaWNoIG1hcmtldCBzZWN0b3IgZG9lcyBTZWlzbWljIHByaW1hcmlseSB0YXJnZXQ/IiwiYSI6WyJGaW5UZWNoIGNvbXBhbmllcyIsIkdhbWluZyBjb21wYW5pZXMiLCJTb2NpYWwgcGxhdGZvcm1zIiwiTWluaW5nIG9wZXJhdGlvbnMiXSwiYyI6MH0seyJxIjoiV2hhdCBpcyB0aGUgbmFtZSBvZiB0aGUgU2Vpc21pYyBtYXNjb3QgKHRoZSByb2NrIGNoYXJhY3Rlcik/IiwiYSI6WyJSb2NreSIsIlJvb2NraWUiLCJSb2NrYSIsIlJpY2tvIl0sImMiOjB9LHsicSI6IldoYXQgaXMgU2Vpc21pYydzIGxvbmctdGVybSB2aXNpb24/IiwiYSI6WyJFbmNyeXB0IGFsbCBibG9ja2NoYWluIHN0YXRlcyIsIkNyZWF0ZSBhbiBFdGhlcmV1bSBMYXllciAyIiwiSW50ZWdyYXRlIEFJIGludG8gV2ViMyIsIkJ1aWxkIGEgY2VudHJhbGl6ZWQgZXhjaGFuZ2UiXSwiYyI6MH0seyJxIjoiSG93IGRvZXMgU2Vpc21pYyBjYXRlZ29yaXplIGl0c2VsZj8iLCJhIjpbIkVuY3J5cHRlZCBCbG9ja2NoYWluIiwiUm9sbHVwIGNoYWluIiwiUHJvb2Ytb2YtQXV0aG9yaXR5IGNoYWluIiwiTW9ub2xpdGhpYyBjaGFpbiJdLCJjIjowfSx7InEiOiJTZWlzbWljIGlzIGRlc2lnbmVkIHRvIGJlIGNvbXBhdGlibGUgd2l0aD8iLCJhIjpbIkV0aGVyZXVtIEVWTSIsIlNvbGFuYSBWTSIsIkJpdGNvaW4gU2NyaXB0IiwiQXZhbGFuY2hlIFZNIl0sImMiOjB9LHsicSI6IkFjY29yZGluZyB0byBTZWlzbWljLCB3aHkgaXMgcHJpdmFjeSBlc3NlbnRpYWw/IiwiYSI6WyJUbyBlbmFibGUgZmluYW5jaWFsIGFwcHMgaW1wb3NzaWJsZSBvbiBleHBvc2VkIGNoYWlucyIsIlRvIHByb3RlY3QgYWdhaW5zdCBORlRzIiwiVG8gc3BlZWQgdXAgbWluaW5nIiwiVG8gcmVkdWNlIGdhcyBmZWVzIl0sImMiOjB9LHsicSI6IldoaWNoIGNvbXBvbmVudCBpcyBjZW50cmFsIHRvIFNlaXNtaWMncyB0ZWNobmljYWwgYXJjaGl0ZWN0dXJlPyIsImEiOlsiRW5jcnlwdGVkIGdsb2JhbCBzdGF0ZSIsIk1pbmluZyBwb29scyIsIlBhcmFsbGVsIGV4ZWN1dGlvbiIsIlNoYXJkaW5nIHdpdGhvdXQgZW5jcnlwdGlvbiJdLCJjIjowfSx7InEiOiJXaGF0IHR5cGVzIG9mIGFwcGxpY2F0aW9ucyBhcmUgaGlnaGxpZ2h0ZWQgaW4gdGhlaXIgZG9jdW1lbnRhdGlvbj8iLCJhIjpbIkV4Y2hhbmdlcywgbGVuZGVycywgdmF1bHRzIiwiTWV0YXZlcnNlIHdvcmxkcyIsIk1lbWUgdG9rZW5zIiwiR2FtaW5nIGd1aWxkcyJdLCJjIjowfSx7InEiOiJJbiB3aGljaCBhcmVhIGRvIHRyYWRpdGlvbmFsIGJsb2NrY2hhaW5zIGZhaWwsIGFjY29yZGluZyB0byBTZWlzbWljPyIsImEiOlsiRmluYW5jaWFsIHByaXZhY3kiLCJUcmFuc2FjdGlvbiBzcGVlZCIsIk5GVCBzdXBwb3J0IiwiRGVjZW50cmFsaXplZCBtaW5pbmciXSwiYyI6MH0seyJxIjoiV2hhdCBtYWtlcyBTZWlzbWljIHRoZSAnZmlyc3Qgb2YgaXRzIGtpbmQnPyIsImEiOlsiRnVsbCBlbmNyeXB0aW9uIG9mIHN0YXRlIGFuZCB0cmFuc2FjdGlvbnMiLCJUaGUgZmFzdGVzdCBibG9ja2NoYWluIiwiQSB6ZXJvLWdhcyBjaGFpbiIsIlVuaGFja2FibGUgbmV0d29yayJdLCJjIjowfV0=";
 
-  
   let QUESTIONS = [];
   let index = 0, score = 0, timeLeft = 15, timer = null;
-  
-  // elmnts
+
   const startModal = document.getElementById("startModal");
   const quizPanel = document.getElementById("quizPanel");
   const formPanel = document.getElementById("formPanel");
@@ -351,18 +190,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const qWrap = document.getElementById("qWrap");
   const nameInput = document.getElementById("nameInput");
   const fileInput = document.getElementById("fileInput");
+  const fileLabel = document.getElementById("fileLabel");
+  const generateBtn = document.getElementById("generateBtn");
   const cardImg = document.getElementById("cardImg");
   const cardName = document.getElementById("cardName");
   const cardScore = document.getElementById("cardScore");
   const cardNote = document.getElementById("cardNote");
 
-  
   try {
     const decoded = decodeURIComponent(escape(window.atob(SECURE_DATA)));
     QUESTIONS = JSON.parse(decoded);
   } catch(e) { console.error(e); QUESTIONS=[]; }
 
-  // check if any data in lcl strg
   try {
     const saved = localStorage.getItem("seismic_done");
     if(saved) {
@@ -373,27 +212,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   } catch(e){}
 
-  
   function showPanel(panelName) {
-  
     quizPanel.classList.remove("active-panel");
     formPanel.classList.remove("active-panel");
     cardPanel.classList.remove("active-panel");
-    
-    
     if(panelName) panelName.classList.add("active-panel");
   }
 
-  
   document.getElementById("startBtn").onclick = () => {
     if(QUESTIONS.length === 0) return;
     startModal.style.display = "none"; 
     startQuiz();
   };
   
-  document.getElementById("cancelStart").onclick = () => location.reload();
-
-  
+  // LOGIC QUIZ
   function startQuiz() {
     index = 0; score = 0; timeLeft = 15;
     showPanel(quizPanel); 
@@ -405,17 +237,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const q = QUESTIONS[index];
     progressText.textContent = `Question ${index+1} / ${QUESTIONS.length}`;
     qWrap.innerHTML = "";
-
     const h2 = document.createElement("h2");
     h2.textContent = q.q;
     qWrap.appendChild(h2);
-
     const box = document.createElement("div");
     box.className = "options";
-
     let answers = q.a.map((txt, idx) => ({ txt: txt, originalIdx: idx }));
     answers.sort(() => Math.random() - 0.5);
-
     answers.forEach((item) => {
       const b = document.createElement("div");
       b.className = "opt";
@@ -431,20 +259,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const correctIdx = QUESTIONS[index].c;
     const allOpts = document.querySelectorAll(".opt");
     allOpts.forEach(o => o.classList.add("disabled"));
-
-    if(chosenIdx === correctIdx) {
-      el.classList.add("correct");
-      score++;
-    } else {
+    if(chosenIdx === correctIdx) { el.classList.add("correct"); score++; } 
+    else {
       el.classList.add("wrong");
       const correctBtn = document.querySelector(`.opt[data-idx="${correctIdx}"]`);
       if(correctBtn) correctBtn.classList.add("correct");
     }
-    
     clearInterval(timer);
     setTimeout(nextQuestion, 800);
   }
-
 
   function startTimer() {
     clearInterval(timer);
@@ -455,8 +278,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
       timerEl.textContent = timeLeft;
       if(timeLeft <= 0) {
         clearInterval(timer);
-        const allOpts = document.querySelectorAll(".opt");
-        allOpts.forEach(o => o.classList.add("disabled"));
+        document.querySelectorAll(".opt").forEach(o => o.classList.add("disabled"));
         const correctIdx = QUESTIONS[index].c;
         const correctBtn = document.querySelector(`.opt[data-idx="${correctIdx}"]`);
         if(correctBtn) correctBtn.classList.add("correct");
@@ -467,12 +289,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   function nextQuestion() {
     index++;
-    if(index < QUESTIONS.length) {
-      renderQuestion();
-      startTimer();
-    } else {
-      finishQuiz();
-    }
+    if(index < QUESTIONS.length) { renderQuestion(); startTimer(); } 
+    else { finishQuiz(); }
   }
 
   function finishQuiz() {
@@ -480,31 +298,49 @@ document.addEventListener('DOMContentLoaded', ()=>{
     showPanel(formPanel); 
   }
 
-  // 
-  function generateCard() {
-    if(!nameInput.value || !fileInput.files[0]) return;
+
+  // 1. Feedback
+  fileInput.addEventListener('change', function() {
+    if (this.files && this.files[0]) {
+      fileLabel.innerHTML = "✅ Photo Selected: " + this.files[0].name.substring(0, 15) + "...";
+      fileLabel.classList.add("uploaded");
+    }
+  });
+
+  
+  generateBtn.onclick = () => {
+    const nameVal = nameInput.value.trim();
+    if(!nameVal) { alert("Please enter your Agent Name."); return; }
+    if(!fileInput.files[0]) { alert("Please tap to upload a photo."); return; }
+
     const r = new FileReader();
+    
     r.onload = e => {
       const img = e.target.result;
       const finalScore = `${score} / ${QUESTIONS.length}`;
-      const note = score<=5?"Just Visiting":score<=10?"Potential Believet":score<=15?"Loyal Supporter":"Seismic Guardian 💎";
+      const note = score<=5?"Just Visiting":score<=10?"Potential Believer":score<=15?"Loyal Supporter":"Seismic Guardian 💎";
       
       showPanel(cardPanel);
       
       cardImg.src = img;
-      cardName.textContent = nameInput.value;
+      cardName.textContent = nameVal;
       cardScore.textContent = finalScore;
       cardNote.textContent = note;
       
       try {
         localStorage.setItem("seismic_done", JSON.stringify({
-          name: nameInput.value, img: img, score: finalScore, note: note
+          name: nameVal, img: img, score: finalScore, note: note
         }));
       } catch(err){}
     };
+    
+    
+    r.onerror = () => { alert("Error loading image. Please try another file."); };
+    
+    
     r.readAsDataURL(fileInput.files[0]);
-  }
-  
+  };
+
   function showCardFromStorage(d) {
     showPanel(cardPanel);
     cardImg.src = d.img;
@@ -512,10 +348,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     cardScore.textContent = d.score;
     cardNote.textContent = d.note;
   }
-
-  nameInput.addEventListener("input", generateCard);
-  fileInput.addEventListener("change", generateCard);
 });
 </script>
 </body>
-</html>
+  </html>
